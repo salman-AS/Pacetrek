@@ -1,0 +1,25 @@
+import React from 'react';
+import "../styles/Caldr.css";
+import { Calendar } from '@fullcalendar/core';
+import Fullcalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPplugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction';
+
+const Caldr = () => {
+  return (
+     <div>
+      <h1 className="calendartitle">Calendar</h1>
+      <div className="calendar-container">
+       < Fullcalendar
+        plugins={[dayGridPlugin,timeGridPplugin,interactionPlugin]}
+        initialView={"dayGridMonth"}
+        
+    />
+</div>
+  </div>
+  );
+  
+}
+
+export default Caldr;

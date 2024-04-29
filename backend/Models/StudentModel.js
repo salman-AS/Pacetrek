@@ -21,7 +21,7 @@ const studentSchema = new mongoose.Schema({
         maxLength: 5
     },
     dob: {
-        type: Date
+        type: Date //'yyyy-mm-dd'
     },
     sem: {
         type: String
@@ -44,6 +44,7 @@ const studentSchema = new mongoose.Schema({
 
 studentSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, 12)
+    // this.dob = await this.dob.toLocaleDateString()
     next()
 })
 

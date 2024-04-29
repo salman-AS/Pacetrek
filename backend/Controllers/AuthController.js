@@ -93,7 +93,8 @@ module.exports.LoginStudent = async (req, res, next) => {
     res.cookie("token", token, {
       withCredentials: true,
       httpOnly: false,
-    });
+    })
+    // console.log(student.dob.toLocaleDateString())
     res.status(200).json({ message: "Student logged in successfully", success: true, student, token });
     next()
   } catch (error) {

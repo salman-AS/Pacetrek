@@ -1,25 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useCookies } from "react-cookie"
 import '../styles/ls.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 const Signup = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [cookies, removeCookie] = useCookies([]);
+
+  const verifyCookie = async () => {
+    if (!cookies.token || cookies.token === 'undefined' || cookies.token === undefined) {
+      console.log(cookies)
+      // navigate("/admin/signup")
+      removeCookie("token")
+      return;
+    }
+    const { data } = await axios.post(
+      "http://localhost:4000/api/admin",
+      {},
+      { withCredentials: true }
+    );
+    const { status } = data;
+    console.log(data)
+    return status
+      ? navigate('/dashboard')
+      : (removeCookie("token"), navigate("/admin/login"));
+  };
+
+  useEffect(() => {
+    console.log(cookies)
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
     username: "",
-  });
-  const { email, password, username } = inputValue;
+  })
+
+  const { email, password, username } = inputValue
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
       ...inputValue,
       [name]: value,
     });
-  };
+  }
 
   const handleError = (err) =>
     toast.error(err, {
@@ -33,6 +62,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      
+      if(!email || !password || !username){
+        handleError('Please fill all the fields!!')
+        return;
+      }
+
       const { data } = await axios.post(
         "http://localhost:4000/api/admin/signup",
         {

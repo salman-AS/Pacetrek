@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import { useCookies } from "react-cookie";
+import React, { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { ToastContainer, toast } from "react-toastify"
+import { useCookies } from "react-cookie"
 import '../styles/ls.css'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -11,9 +11,11 @@ const Login = () => {
   const [cookies, removeCookie] = useCookies([]);
 
   const verifyCookie = async () => {
-    if (!cookies.token || cookies.token === 'undefined') {
+    if (!cookies.token || cookies.token === 'undefined' || cookies.token === undefined) {
       console.log(cookies)
-      navigate("/admin/login");
+      // navigate("/admin/login");
+      removeCookie("token")
+      return;
     }
     const { data } = await axios.post(
       "http://localhost:4000/api/admin",
@@ -115,7 +117,7 @@ const Login = () => {
           </div>
           <button type="submit">Submit</button>
           <span>
-            Already have an account? <Link to={"/admin/signup"}>Signup</Link>
+            Don't have an account? <Link to={"/admin/signup"}>Signup</Link>
           </span>
         </form>
         <ToastContainer />

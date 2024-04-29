@@ -22,9 +22,10 @@ const Dashboard = () => {
 
   const verifyCookie = async () => {
     console.log(cookies)
-    if (!cookies.token || cookies.token === 'undefined') {
+    if (!cookies.token || cookies.token === 'undefined' || cookies.token === undefined) {
       console.log(cookies)
-      navigate("/admin/login");
+      removeCookie("token")
+      navigate("/")
     }
     const { data } = await axios.post(
       "http://localhost:4000/api/admin",

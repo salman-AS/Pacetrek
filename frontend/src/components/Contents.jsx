@@ -4,10 +4,10 @@ import "../styles/contents.css";
 import Cards from '../components/Cards';
 import Caldr from './Caldr'
 
-const Contents = () => {
+const Contents = ({username , Logout}) => {
   return (
   <div className="contents">
-    <ContentHeader />
+    <ContentHeader username={username} Logout={Logout} />
     < Cards />
     <Caldr />
 

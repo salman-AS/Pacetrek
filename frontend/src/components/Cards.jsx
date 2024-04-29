@@ -15,11 +15,14 @@ const course=[
         icon:<MdAssuredWorkload />,
     },
 ];
+
+let i = 1;
+
 const Cards = () => {
     return (
         <div className="card--container">
           {course.map((item) => (
-          <div className="card">
+          <div className="card" key={i++}>
                     <div className="card--cover">{item.icon}</div>
                     <div className="card--title">
                         <h2>{item.title}</h2>

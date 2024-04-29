@@ -1,10 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
-*{
-    margin:0;
-    padding:0;
-    font-family:'Montserrat',sans-serif;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
-body{
-    background:#dde6ed;
-    padding:20px
+
+.dashboard-body {
+  display: block;
+  background: #dde6ed;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.home-body {
+  background: #dde6ed;
+  height: 100vh;
+  width: 100vw;
+  gap: 100px;
+}
+
+.home-card {
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-button {
+  width: 200px;
 }

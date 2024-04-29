@@ -1,11 +1,34 @@
-const app = require('./app') // The Express app
-const config = require('./utils/config')
-const logger = require('./utils/logger')
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const app = express();
+require("dotenv").config();
+const cookieParser = require("cookie-parser");
+const authRoute = require("./Routes/AuthRoute");
+const { MONGO_URL, PORT } = process.env;
 
-app.get('/', (request, response) => {
-	response.send('<h1>Hello World!</h1>')
-})
+mongoose
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB is  connected successfully"))
+  .catch((err) => console.error(err));
 
-app.listen(config.PORT, () => {
-	logger.info(`Server running on port ${config.PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+app.use(
+  cors({
+    origin: [`http://localhost:5173`],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+
+app.use(express.json());
+
+app.use("/", authRoute);

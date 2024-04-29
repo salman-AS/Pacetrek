@@ -59,14 +59,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      {/* <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        <button onClick={Logout}>LOGOUT</button>
-      </div>
-      <ToastContainer /> */}
+      {/* <ToastContainer /> */}
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Dashboard = () => {
       navigate("/admin/login");
     }
     const { data } = await axios.post(
-      "http://localhost:4000/api",
+      "http://localhost:4000/api/admin",
       {},
       { withCredentials: true }
     );

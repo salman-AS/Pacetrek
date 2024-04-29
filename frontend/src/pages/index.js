@@ -1,4 +1,7 @@
+export {default as Home} from './Home'
 export {default as Login} from './Login'
 export {default as Signup} from './Signup'
 export {default as Dashboard} from './Dashboard'
-export {default as Home} from './Home'
+export {default as Student_Dashboard} from './Student_Dashboard'
+export {default as Student_Login} from './Student_Login'
+export {default as Student_Signup} from './Student_Signup'

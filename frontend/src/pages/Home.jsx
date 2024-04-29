@@ -13,7 +13,7 @@ const Home = () => {
                     <Typography.Title level={2} style={{ margin: 0 }}>
                         Admin
                     </Typography.Title>
-                    <p>Go to admin login</p>
+                    <Typography.Paragraph>Go to admin login</Typography.Paragraph>
                     <Button size="large" type="primary" className="home-button" onClick={() => navigate('/admin/login')}>Login</Button>
                 </Flex>
             </Card>
@@ -22,7 +22,7 @@ const Home = () => {
                     <Typography.Title level={2} style={{ margin: 0 }}>
                         Student
                     </Typography.Title>
-                    <p>Go to student login</p>
+                    <Typography.Paragraph>Go to student login</Typography.Paragraph>
                     <Button size="large" type="primary" className="home-button" onClick={() => navigate('/student/login')}>Login</Button>
                 </Flex>
             </Card>

@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+import { Table } from 'antd';
 
 const StudentReg = ({ onAddStudent }) => {
     const navigate = useNavigate();
@@ -43,11 +46,11 @@ const StudentReg = ({ onAddStudent }) => {
         lastName: '',
         email: '',
         password: '',
-        admissionNo: null,
+        admissionNo: '',
         dob: '',
-        year: null,
+        year: '',
         dept: '',
-        phoneNo: null
+        phoneNo: ''
     });
 
     const handleChange = (e) => {
@@ -58,19 +61,48 @@ const StudentReg = ({ onAddStudent }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleError = (err) =>
+        toast.error(err, {
+            position: "bottom-left",
+        });
+    const handleSuccess = (msg) =>
+        toast.success(msg, {
+            position: "bottom-right",
+        });
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        onAddStudent(student);
+
+        try {
+            const { data } = await axios.post(
+                "http://localhost:4000/api/student/signup",
+                {
+                    ...student,
+                },
+                { withCredentials: true }
+            );
+            const { success, message } = data;
+            console.log(data, student)
+            if (success) {
+                handleSuccess(message);
+            } else {
+                handleError(message);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+        // onAddStudent(student);
         setStudent({
             firstName: '',
             lastName: '',
             email: '',
             password: '',
-            admissionNo: null,
+            admissionNo: '',
             dob: '',
-            year: null,
+            year: '',
             dept: '',
-            phoneNo: null
+            phoneNo: ''
         });
     };
 
@@ -101,7 +133,7 @@ const StudentReg = ({ onAddStudent }) => {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="dob">Date of birth:</label>
-                                <input type="number" id="dob" name="dob" value={student.dob} onChange={handleChange} required />
+                                <input type="date" id="dob" name="dob" value={student.dob} onChange={handleChange} required />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="admissionNo">Admission Number:</label>
@@ -110,7 +142,7 @@ const StudentReg = ({ onAddStudent }) => {
                             <div className="form-group">
                                 <label htmlFor="year">Year:</label>
                                 <select id="year" name="year" value={student.year} onChange={handleChange} required>
-                                    <option value="">Select Year</option>
+                                    <option value=''>Select Year</option>
                                     <option value={1}>1st Year</option>
                                     <option value={2}>2nd Year</option>
                                     <option value={3}>3rd Year</option>
@@ -118,8 +150,8 @@ const StudentReg = ({ onAddStudent }) => {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="department">Department:</label>
-                                <select id="department" name="department" value={student.department} onChange={handleChange} required>
+                                <label htmlFor="dept">Department:</label>
+                                <select id="dept" name="dept" value={student.dept} onChange={handleChange} required>
                                     <option value="">Select Department</option>
                                     <option value="CSE">CSE</option>
                                     <option value="IT">IT</option>
@@ -139,7 +171,7 @@ const StudentReg = ({ onAddStudent }) => {
                             <button type="submit" className="add-button">Add Student</button>
                         </form>
                     </div>
-
+                    <ToastContainer />
                 </div>
             </div>
         </div>

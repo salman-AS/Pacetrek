@@ -7,8 +7,9 @@ import StudentReg from "./StudentReg/Registration";
 import Table from './table/Table';
 import Quizoption from './Quiz/Quizoption';
 import Event from './Eventupdates/Event';
-import Help from './Help/Help';
+// import Help from './Help/Help';
 import Qclient from "./Quiz/Qclient";
+import Coding from './pages/Coding';
 
 
 function App() {
@@ -22,7 +23,9 @@ function App() {
         <Route path="/admin/studentreg" element={<StudentReg />} />
         <Route path="/admin/table" element={<Table />} />
         <Route path="/admin/quizo" element={<Quizoption />} />
-        <Route path="/admin/quizo/qclient" element={<Qclient />} />
+        <Route path="/admin/quizo/qclient" element={<Qclient option={'aptitude'}/>} />
+        <Route path="/admin/coursework" element={<Qclient option={'coursework'}/>} />
+        <Route path="/admin/coding" element={<Coding />} />
         <Route path="/admin/event" element={<Event />} />
         {/* <Route path="/admin/help" element={<Help />} /> */}
 

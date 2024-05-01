@@ -26,7 +26,7 @@ const Login = () => {
     console.log(data)
     return status
       ? navigate('/dashboard')
-      : (removeCookie("token"), navigate("/admin/login"));
+      : (removeCookie("token"));
   };
 
   useEffect(() => {

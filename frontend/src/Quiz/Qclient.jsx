@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/quiz.css';
 import Sidebar from '../components/Sidebar';
-import '../App.css'
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { Button, Flex, Space, Table } from 'antd';
+import Column from 'antd/es/table/Column';
+import 'react-toastify/dist/ReactToastify.css'
+import '../styles/quiz.css';
+import '../App.css'
 
-const Qclient = () => {
+const Qclient = ({ option }) => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
@@ -38,7 +42,7 @@ const Qclient = () => {
       : (removeCookie("token"), navigate("/admin/login"));
   };
 
-
+  const [title, setTitle] = useState('')
   const [questions, setQuestions] = useState([{ question: '', options: [''] }]);
 
   const handleQuestionChange = (index, value) => {
@@ -75,52 +79,150 @@ const Qclient = () => {
     setQuestions(newQuestions);
   };
 
-  const handleUpload = () => {
+  const handleSubmit = async (e) => {
     // Add logic for handling upload
+    e.preventDefault();
+    const aptitude = {
+      title,
+      questions
+    }
+    console.log(aptitude)
+    try {
+      const { data } = await axios.post(
+        `http://localhost:4000/api/${option}/add`,
+        {
+          ...aptitude,
+        },
+        { withCredentials: true }
+      );
+      const { success, message } = data;
+      console.log(data)
+      if (success) {
+        toast.success(message, {
+          position: "bottom-left",
+        })
+      } else {
+        toast.error(message, {
+          position: "bottom-left",
+        })
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    getData()
+    setTitle('')
+    setQuestions([{ question: '', options: [''] }])
   };
+
+  const remove = async (id) => {
+    console.log(id)
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:4000/api/${option}/delete/${id}`,
+        {},
+        { withCredentials: true }
+      );
+      const { success, message, documents } = data;
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+    getData()
+  }
+
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:4000/api/${option}/getAll`,
+        {},
+        { withCredentials: true }
+      );
+      const { success, message, documents } = data;
+      console.log(data)
+      setData(documents)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getData()
+    console.log(data)
+  }, [])
 
   return (
     <div className="dashboard-body">
       <div className='dashboard'>
         <Sidebar />
-        <div className="dashboard--contents">
+        <Flex vertical className="dashboard--contents">
 
           <div className="quiz-container">
-            <h1 className="quiz-title">Quiz</h1>
-            {questions.map((question, index) => (
-              <div key={index} className="question-container">
-                <h4 className="question-number">Question {index + 1}</h4>
-                <input
-                  type="text"
-                  value={question.question}
-                  onChange={(e) => handleQuestionChange(index, e.target.value)}
-                  placeholder="Enter question"
-                />
-                <button onClick={() => removeQuestion(index)}>Remove Question</button>
-                <div>
-                  {question.options.map((option, optionIndex) => (
-                    <div key={optionIndex}>
-                      <label className="option-label">{String.fromCharCode(65 + optionIndex)}</label>
-                      <input
-                        type="text"
-                        value={option}
-                        onChange={(e) => handleOptionChange(index, optionIndex, e.target.value)}
-                        placeholder={`Enter option ${String.fromCharCode(65 + optionIndex)}`}
-                      />
-                      <button onClick={() => removeOption(index, optionIndex)}>Remove Option</button>
-                    </div>
-                  ))}
+            <form onSubmit={handleSubmit}>
+              <h1 className="quiz-title">{option.charAt(0).toUpperCase() + option.slice(1)}</h1>
+              <h2 className="question-number">Title</h2>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter Title"
+                required
+              />
+              {questions.map((question, index) => (
+                <div key={index} className="question-container">
+                  <h4 className="question-number">Question {index + 1}</h4>
+                  <input
+                    type="text"
+                    value={question.question}
+                    onChange={(e) => handleQuestionChange(index, e.target.value)}
+                    placeholder="Enter question"
+                    required
+                  />
+                  <button onClick={() => removeQuestion(index)}>Remove Question</button>
                   <button onClick={() => addOption(index)}>Add Option</button>
+                  <div>
+                    {question.options.map((option, optionIndex) => (
+                      <div key={optionIndex}>
+                        <label className="option-label">{String.fromCharCode(65 + optionIndex)}</label>
+                        <input
+                          type="text"
+                          value={option}
+                          onChange={(e) => handleOptionChange(index, optionIndex, e.target.value)}
+                          placeholder={`Enter option ${String.fromCharCode(65 + optionIndex)}`}
+                          required
+                        />
+                        <button onClick={() => removeOption(index, optionIndex)}>Remove Option</button>
+                      </div>
+                    ))}
+
+                  </div>
                 </div>
+              ))}
+              <button onClick={addQuestion}>Add Question</button>
+              <div className="upload-container">
+                <button type="submit" className="upload-button">Upload</button>
               </div>
-            ))}
-            <button onClick={addQuestion}>Add Question</button>
-            <div className="upload-container">
-              <button onClick={handleUpload} className="upload-button">Upload</button>
-            </div>
+            </form>
+          </div>
+          <div className='CodeTable'>
+            <Table dataSource={data} className='table'>
+              <Column title="Title" dataIndex="title" key="title"/>
+              <Column
+                title="Action"
+                dataIndex="_id"
+                key="_id"
+                render={(_id) => (
+                  <Space size="middle">
+                    <Button danger type='primary' onClick={() => remove(_id)}>Delete</Button>
+                  </Space>
+                )}
+              />
+            </Table>
           </div>
 
-        </div>
+        </Flex>
+        <ToastContainer />
       </div>
     </div>
 

@@ -54,21 +54,21 @@ module.exports.Login = async (req, res, next) => {
 
 module.exports.SignupStudent = async (req, res, next) => {
   try {
-    const { email, password, username, admissionNo, dob, sem, dept, phoneNo, sex, createdAt } = req.body;
-    if (!email || !password || !username || !admissionNo) {
+    const { firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo } = req.body;
+    if (!email || !password || !firstName || !admissionNo) {
       return res.status(401).json({ message: 'All fields are required' })
     }
     const existingStudent = await Student.findOne({ email });
     if (existingStudent) {
       return res.status(401).json({ message: "User already exists" })
     }
-    const student = await Student.create({ email, password, username, admissionNo, dob, sem, dept, phoneNo, sex, createdAt });
-    const token = createSecretToken(student._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-    res.status(201).json({ message: "Student registered successfully", success: true, student, token });
+    const student = await Student.create({ firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo });
+    // const token = createSecretToken(student._id);
+    // res.cookie("token", token, {
+    //   withCredentials: true,
+    //   httpOnly: false,
+    // });
+    res.status(201).json({ message: "Student registered successfully", success: true, student });
     next();
   } catch (error) {
     console.error(error);

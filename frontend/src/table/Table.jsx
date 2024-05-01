@@ -9,11 +9,27 @@ const Table = () => {
     const navigate = useNavigate();
     const [cookies, removeCookie] = useCookies([]);
     const [username, setUsername] = useState("");
+    const [students, setStudents] = useState([]);
 
     useEffect(() => {
         console.log(cookies)
         verifyCookie();
+        getStudents();
     }, [cookies, navigate, removeCookie]);
+
+    const getStudents = async () => {
+        try {
+            const { data } = await axios.get(
+                "http://localhost:4000/api/student/getStudents",
+                {},
+                { withCredentials: true }
+            )
+            console.log(data)
+            setStudents(data.students)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const verifyCookie = async () => {
         console.log(cookies)
@@ -37,19 +53,9 @@ const Table = () => {
             : (removeCookie("token"), navigate("/admin/login"));
     };
 
-
-    // Sample student data (replace with your actual data)
-    const students = [
-        { id: 1, name: "Salman ", email: "Salman@gmail.com" },
-        { id: 2, name: "Shahna Sheri", email: "Shana@gmail.com" },
-        { id: 3, name: "sahal", email: "sahal@gmail.com" },
-        { id: 4, name: "Rida", email: "Rida@gmail.com" },
-
-    ];
-
-    const handleViewClick = (studentId) => {
+    const handleViewClick = (student) => {
         // Logic to handle the "View" action for the selected student
-        console.log("View clicked for student ID:", studentId);
+        console.log("View clicked for student ID:", student);
     };
 
     return (
@@ -63,20 +69,22 @@ const Table = () => {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th className="table-header">Student ID</th>
+                                    <th className="table-header">Admission No</th>
                                     <th className="table-header">Name</th>
-                                    <th className="table-header">Email</th>
+                                    <th className="table-header">Year</th>
+                                    <th className="table-header">Department</th>
                                     <th className="table-header">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {students.map(student => (
-                                    <tr key={student.id}>
-                                        <td className="table-cell">{student.id}</td>
-                                        <td className="table-cell">{student.name}</td>
-                                        <td className="table-cell">{student.email}</td>
+                                    <tr key={student._id}>
+                                        <td className="table-cell">{student.admissionNo}</td>
+                                        <td className="table-cell">{student.firstName+' '+student.lastName}</td>
+                                        <td className="table-cell">{student.year}</td>
+                                        <td className="table-cell">{student.dept}</td>
                                         <td className="table-cell">
-                                            <button className="table-button" onClick={() => handleViewClick(student.id)}>
+                                            <button className="table-button" onClick={() => handleViewClick(student)}>
                                                 View
                                             </button>
                                         </td>

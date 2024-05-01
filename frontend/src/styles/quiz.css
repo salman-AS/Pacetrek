@@ -46,10 +46,23 @@
 /* Increase the width and size of text fields */
 .quiz-container input[type="text"],
 .quiz-container input[type="email"],
-.quiz-container input[type="password"] {
+.quiz-container input[type="password"],
+.quiz-container input[type="url"],
+select {
   width: calc(100% - 20px); /* Set the width of the text field */
   /* Adjust the width value as needed */
   font-size: 16px; /* Set the font size */
   padding: 12px; /* Increase padding for better appearance */
   margin-bottom: 10px; /* Add margin below the text field */
+  border-radius: 5px;
+  border-color: rgb(204, 204, 204);
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

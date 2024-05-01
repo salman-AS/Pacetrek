@@ -13,7 +13,7 @@ module.exports.userVerification = (req, res) => {
       return res.json({ status: false });
     } else {
       const user = await User.findById(data.id);
-      if (user) return res.json({ status: true, ...user});
+      if (user) return res.json({ status: true, user});
       else return res.json({ status: false });
     }
   });
@@ -29,7 +29,7 @@ module.exports.studentVerification = (req, res) => {
       return res.json({ status: false });
     } else {
       const student = await Student.findById(data.id);
-      if (student) return res.json({ status: true, ...student});
+      if (student) return res.json({ status: true, student});
       else return res.json({ status: false });
     }
   });

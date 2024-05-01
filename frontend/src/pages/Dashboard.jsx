@@ -6,7 +6,7 @@ import axios from "axios";
 import Sidebar from '../components/Sidebar';
 import Contents from '../components/Contents';
 // import Basic from '../evaluation/Basic';
-import '../App.css';
+import '../App.css'
 import '../index.css'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -34,11 +34,9 @@ const Dashboard = () => {
     );
     const { status, user } = data;
 
-    console.log(data)
-
-    setUsername(user);
+    setUsername(user.username);
     return status
-      ? /* toast(`Hello ${user}`, {
+      ? /* toast(`Hello ${user.username}`, {
         position: "top-right",
       }) */console.log(cookies)
       : (removeCookie("token"), navigate("/admin/login"));
@@ -55,8 +53,8 @@ const Dashboard = () => {
         <Sidebar />
         <div className="dashboard--contents">
           <Contents username={username} Logout={Logout} />
-          <div className="basic">
-          </div>
+          {/* <div className="basic">
+          </div> */}
         </div>
       </div>
       {/* <ToastContainer /> */}

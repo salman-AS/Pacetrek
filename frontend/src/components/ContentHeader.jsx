@@ -4,12 +4,13 @@ import { BiSearch, BiNotification, BiLogOut } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import Dashboard from '../pages/Dashboard';
+// import Dashboard from '../pages/Dashboard';
 
-const ContentHeader = ({username, Logout}) => {
+const ContentHeader = ({ username, Logout }) => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
 
+  console.log(username)
   // const Logout = () => {
   //   console.log(cookies)
   //   removeCookie("token");
@@ -28,8 +29,8 @@ const ContentHeader = ({username, Logout}) => {
         <div className="notify">
           <BiNotification className="icon" />
         </div>
-        <BiLogOut className='icon' onClick={Logout} title='Logout'/>
-        </div>
+        <BiLogOut className='icon' onClick={Logout} title='Logout' />
+      </div>
     </div>
   );
 };

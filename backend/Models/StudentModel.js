@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 
 const studentSchema = new mongoose.Schema({
-    username: {
+    firstName: {
         type: String,
-        required: [true, "Username is required"]
+        required: [true, "Firstname is required"]
+    },
+    lastName: {
+        type: String
     },
     email: {
         type: String,
@@ -23,8 +26,8 @@ const studentSchema = new mongoose.Schema({
     dob: {
         type: Date //'yyyy-mm-dd'
     },
-    sem: {
-        type: String
+    year: {
+        type: Number
     },
     dept: {
         type: String
@@ -32,9 +35,6 @@ const studentSchema = new mongoose.Schema({
     phoneNo: {
         type: Number,
         maxLength: 10
-    },
-    sex: {
-        type: String
     },
     createdAt: {
         type: Date,

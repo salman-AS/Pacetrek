@@ -1,38 +1,49 @@
-.menu{
-    display:flex;
-    flex-direction:column;
+.menu {
+    display: flex;
+    flex-direction: column;
     gap: 2.3rem;
-    height:94vh;
+    height: 94vh;
 }
-.logo{
-    text-align:center;
-    padding:20px;
-    color:#27374d;
-    align-items:center;
-    display:flex;
-    gap:20px;
+
+.logo {
+    text-align: center;
+    padding: 20px;
+    color: #27374d;
+    align-items: center;
+    display: flex;
+    gap: 20px;
 }
-.logo-icon{
+
+.logo-icon {
     font-size: 1.4rem;
 }
-.menu--list{
-    display:flex;
+
+.menu--list {
+    display: flex;
     flex-direction: column;
-    gap:20px;
+    gap: 20px;
 }
-.menu--list .item{
-    display:flex;
-    align-items:center;
-    gap:20px;
-    font-size:1.1rem;
-    text-decoration:none;
-    font-weight:600;
-    padding:5px;
+
+.menu--list .item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px;
     border-radius: 10px;
-    transition:0.3s ease-in-out;
-    color:#27374d;
+    transition: 0.3s ease-in-out;
+    color: #27374d;
 }
-.menu--list .item:hover{
-    background:#27374d;
-    color:#dde6ed;
+
+/* Add this style for the active state of the item */
+.menu--list .item.active {
+    background: #27374d; /* Change this color to the desired color */
+    color: #dde6ed; /* Change this color to the desired color */
+}
+
+.menu--list .item:hover {
+    background: #27374d;
+    color: #dde6ed;
 }

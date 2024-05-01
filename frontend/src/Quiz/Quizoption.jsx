@@ -9,17 +9,17 @@ const course = [
     {
         title: "Aptitude Reasoning",
         icon: <IoExtensionPuzzleOutline />,
-        link: "/event", // Define the route for each card
+        link: "/quizo/Aptitude", // Define the route for each card
     },
     {
         title: "Course Work",
         icon: <IoBookOutline />,
-        link: "/coursework",
+        link: "/quizo/Aptitude",
     },
     {
         title: "Coding",
         icon: <BsCodeSlash />,
-        link: "/coding",
+        link: "/quizo/Coding",
     },
 ];
 

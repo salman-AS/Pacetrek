@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container,
+.uploaded-items-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px; /* Add margin between containers */
+}
+
+.form-container h2,
+.uploaded-items-container h2 {
+  color: #526d82; /* Change heading font color */
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  appearance: none;
+}
+
+button {
+  background-color: #526d82;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.uploaded-items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.uploaded-items li {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .form-container {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .uploaded-items-container {
+    flex: 1;
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,55 @@
+.quiz-container {
+  width: 90%; /* Adjust the width property */
+  max-width: 800px; /* Increase max-width to make the box bigger */
+  height: auto; /* Adjust height to auto */
+  max-height: 90vh; /* Set max-height as a fallback to prevent excessive growth */
+  overflow-y: auto; /* Add scrollbars if content exceeds max-height */
+  margin: 0 auto; /* Center the container horizontally */
+  background-color: #ffffff; /* White background color */
+  border: 1px solid #cccccc; /* Grey border */
+  padding: 40px; /* Increase padding for more space inside the box */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.quiz-container h1 {
+  color: #526d82;
+}
+
+.quiz-container h2 {
+  color: #526d82;
+}
+
+.upload-button:hover {
+  background-color: darkblue;
+}
+
+.question-number {
+  color: #526d82;
+  margin-top: 20px; /* Add margin above the question number */
+  margin-bottom: 10px; /* Add margin below the question number */
+}
+
+.upload-container {
+  margin-top: 20px;
+}
+
+.upload-button {
+  background-color: #526d82;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* Increase the width and size of text fields */
+.quiz-container input[type="text"],
+.quiz-container input[type="email"],
+.quiz-container input[type="password"] {
+  width: calc(100% - 20px); /* Set the width of the text field */
+  /* Adjust the width value as needed */
+  font-size: 16px; /* Set the font size */
+  padding: 12px; /* Increase padding for better appearance */
+  margin-bottom: 10px; /* Add margin below the text field */
+}

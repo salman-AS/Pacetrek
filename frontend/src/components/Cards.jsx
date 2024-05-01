@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsFillPersonFill,BsFillPersonCheckFill } from "react-icons/bs";
+import { BsFillPersonFill,BsFillPersonCheckFill , BsBank} from "react-icons/bs";
 import { MdAssuredWorkload } from "react-icons/md";
 const course=[
     {
@@ -10,10 +10,15 @@ const course=[
         title:"Completed Quiz",
         icon:<BsFillPersonCheckFill />,
     },
+     {
+        title:"Placement Events",
+        icon:< BsBank />,
+    },
     {
         title:"students Placed",
         icon:<MdAssuredWorkload />,
     },
+   
 ];
 const Cards = () => {
     return (

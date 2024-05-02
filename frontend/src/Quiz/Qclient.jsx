@@ -2,7 +2,7 @@ import React, { useState } from 'react'; // Import the CSS file
 import '../styles/quiz.css';
 
 const Qclient = () => {
-  const [questions, setQuestions] = useState([{ question: '', options: [''] }]);
+  const [questions, setQuestions] = useState([{ question: '', options: [''], correctAnswer: '' }]);
 
   const handleQuestionChange = (index, value) => {
     const newQuestions = [...questions];
@@ -16,8 +16,14 @@ const Qclient = () => {
     setQuestions(newQuestions);
   };
 
+  const handleCorrectAnswerChange = (questionIndex, value) => {
+    const newQuestions = [...questions];
+    newQuestions[questionIndex].correctAnswer = value;
+    setQuestions(newQuestions);
+  };
+
   const addQuestion = () => {
-    setQuestions([...questions, { question: '', options: [''] }]);
+    setQuestions([...questions, { question: '', options: [''], correctAnswer: '' }]);
   };
 
   const removeQuestion = (index) => {
@@ -69,6 +75,15 @@ const Qclient = () => {
               </div>
             ))}
             <button onClick={() => addOption(index)}>Add Option</button>
+          </div>
+          <div>
+            <label>Correct Answer:</label>
+            <input
+              type="text"
+              value={question.correctAnswer}
+              onChange={(e) => handleCorrectAnswerChange(index, e.target.value)}
+              placeholder="Enter correct answer"
+            />
           </div>
         </div>
       ))}

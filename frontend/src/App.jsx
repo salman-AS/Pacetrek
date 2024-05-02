@@ -10,7 +10,7 @@ import Event from './Eventupdates/Event';
 // import Help from './Help/Help';
 import Qclient from "./Quiz/Qclient";
 import Coding from './pages/Coding';
-
+import Stprofile from './profile/Stprofile';
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
 
         <Route path='/student/login' element={<Student_Login />} />
         <Route path='/student/dashboard' element={<Student_Dashboard />} />
+        <Route path='/student/profile' element={<Stprofile/>} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

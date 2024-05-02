@@ -1,48 +1,60 @@
-.quizopt--container{
-    display:flex;
-    gap:20px;
-    align-items:center;
-    margin-top:2rem;
 
-}
-.quizopt{
-    width:200px;
-    height:200px;
-    flex:1;
-    background:#dde6ed;
-    padding:20px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    flex-direction:column;
-    gap:20px;
-    transition:0.5s ease-in-out;
-}
-.quizopt:hover{
-    transform:scale(1.04);
-    cursor:pointer;
-}
-.quizopt--cover{
-    background:#fff;
-    font-size:3rem;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-    border-radius: 20px;
-    color:#969393
-}
-.quizopt--title{
-    background:#ffffffc0;
-    width:100%;
-    text-align:center;
-    padding:10px 0;
-    font-size:14px;
-    color:#526d82;
-    border-radius: 10px;
-}
 .quizopt-heading {
-    font-size: 30px; /* Adjust as needed */
-    margin-bottom: 20px; /* Add space between heading and container */
-    color: #526d82; /* Desired font color */
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #526d82; 
+  text-align: center; 
+}
+.quizopt--container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center; 
+  margin-top: 2rem;
+}
+.quizopt {
+  width: 200px;
+  height: 200px;
+  background: #dde6ed;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.5s ease-in-out;
+}
+.quizopt:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+.quizopt--cover {
+  background: #fff;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 20px;
+  color: #969393;
+}
+.quizopt--title {
+  background: #ffffffc0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #526d82;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .quizopt {
+    flex-basis: calc(50% - 20px);
+  }
+}
+@media only screen and (max-width: 480px) {
+  .quizopt {
+    flex-basis: calc(100% - 20px);
+  }
 }

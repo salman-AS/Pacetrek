@@ -8,10 +8,13 @@ import Table from './table/Table';
 import Quizoption from './Quiz/Quizoption';
 import Event from './Eventupdates/Event';
 import Help from './Help/Help';
-
+import Aptitude from './Quiz/Qclient';
+import Coding from './Quiz/Coding';
+import Leaderboard from './LeaderBoard/Leaderboard';
 const App = () => {
   return (
-    <Router> {/* Wrap the entire application with Router */}
+    <Router> 
+         {/* Wrap the entire application with Router */}
           <div className='dashboard'>
             <Sidebar />
             <div className="dashboard--contents">
@@ -22,6 +25,9 @@ const App = () => {
             <Route path="/quizo" element={<Quizoption/>}/>
             <Route path="/event" element={<Event/>}/>
             <Route path="/help" element={<Help/>}/>
+            <Route path="/quizo/Aptitude" element={<Aptitude/>}/>
+            <Route path="/quizo/Coding" element={<Coding/>}/>
+            <Route path="/leaderboard" element={<Leaderboard/>}/>
           </Routes>
         </div>
       </div>

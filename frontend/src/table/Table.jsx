@@ -31,6 +31,33 @@ const Table = () => {
         }
     }
 
+    const getRank = async (id) => {
+        let rank = 0
+        try {
+            const { data } = await axios.get(
+                "http://localhost:4000/api/student/getStudents",
+                {},
+                { withCredentials: true }
+            )
+            const students = data.students
+            const sortedStudents = students.sort((a, b) => {
+                console.log(a.score, b.score)
+                if (a.score > b.score)
+                    return a;
+                else
+                    return b;
+            }).map(student => student._id)
+            const rankedStudents = sortedStudents.reverse()
+            rank = rankedStudents.indexOf(id)+1
+            console.log(rankedStudents)
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(rank)
+        return rank
+    }
+    
+
     const verifyCookie = async () => {
         console.log(cookies)
         if (!cookies.token || cookies.token === 'undefined' || cookies.token === undefined) {
@@ -47,15 +74,45 @@ const Table = () => {
 
         setUsername(user.username);
         return status
-            ? /* toast(`Hello ${user.username}`, {
-        position: "top-right",
-      }) */console.log(cookies)
+            ? console.log(cookies)
             : (removeCookie("token"), navigate("/admin/login"));
     };
 
-    const handleViewClick = (student) => {
-        // Logic to handle the "View" action for the selected student
-        console.log("View clicked for student ID:", student);
+    const [showModal, setShowModal] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        admissionNo: "",
+        dob: "",
+        phoneNo: "",
+        year: "",
+        cgpa: "",
+        rank: "",
+        dept: ""
+    });
+
+    const handleViewClick = async (student) => {
+        // Set form data and show the modal
+        // console.log(typeof(getRank(student._id)))
+        let rank = await getRank(student._id)
+        console.log(rank)
+        setFormData({
+            name: student.firstName + ' ' + student.lastName,
+            email: student.email,
+            admissionNo: student.admissionNo,
+            dob: student.dob,
+            phoneNo: student.phoneNo,
+            year: student.year,
+            dept: student.dept,
+            cgpa: student.cgpa,
+            rank: rank,
+        });
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        // Close the modal
+        setShowModal(false);
     };
 
     return (
@@ -80,7 +137,7 @@ const Table = () => {
                                 {students.map(student => (
                                     <tr key={student._id}>
                                         <td className="table-cell">{student.admissionNo}</td>
-                                        <td className="table-cell">{student.firstName+' '+student.lastName}</td>
+                                        <td className="table-cell">{student.firstName + ' ' + student.lastName}</td>
                                         <td className="table-cell">{student.year}</td>
                                         <td className="table-cell">{student.dept}</td>
                                         <td className="table-cell">
@@ -92,6 +149,53 @@ const Table = () => {
                                 ))}
                             </tbody>
                         </table>
+
+                        {/* Modal */}
+                        {showModal && (
+                            <div className="modal">
+                                <div className="modal-content">
+                                    <span className="close" onClick={handleCloseModal}>&times;</span>
+                                    <h2 className="modal-heading">Student Details</h2>
+                                    <label className="modal-label">
+                                        Name:
+                                        <input type="text" value={formData.name} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        Admission Number:
+                                        <input type="text" value={formData.admissionNo} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        DOB:
+                                        <input type="text" value={formData.dob} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        Email:
+                                        <input type="email" value={formData.email} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        Phone Number:
+                                        <input type="text" value={formData.phoneNo} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        Year:
+                                        <input type="text" value={formData.year} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        Department:
+                                        <input type="text" value={formData.dept} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        CGPA:
+                                        <input type="text" value={formData.cgpa} readOnly />
+                                    </label>
+                                    <label className="modal-label">
+                                        Leaderboard Rank:
+                                        <input type="text" value={formData.rank} readOnly />
+                                    </label>
+
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                 </div>

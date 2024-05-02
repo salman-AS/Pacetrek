@@ -5,7 +5,13 @@ const Code = require("../Models/CodeModel");
 
 module.exports.getStudents = async (req, res, next) => {
   try {
-    const students = await Student.find()
+    const oldstudents = await Student.find()
+    const students = oldstudents.map(student => {
+      const { _id, firstName, lastName, email, password, admissionNo, year, dept, phoneNo, createdAt, cgpa, score, aptitude, coursework, code, __v } = student
+      const dob = student.dob.toLocaleDateString()
+      const newStudent = { _id, firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo, createdAt, cgpa, score, aptitude, coursework, code, __v }
+      return newStudent
+    })
     res.status(201).json({ message: "Student collection fetched successfully", success: true, students });
     next();
   } catch (error) {
@@ -13,7 +19,7 @@ module.exports.getStudents = async (req, res, next) => {
   }
 };
 
-module.exports.getAptitudes = async (req,res,next) => {
+module.exports.getAptitudes = async (req, res, next) => {
   try {
     const documents = await Aptitude.find()
     res.status(201).json({ message: "Aptitude collection fetched successfully", success: true, documents });
@@ -23,7 +29,7 @@ module.exports.getAptitudes = async (req,res,next) => {
   }
 }
 
-module.exports.getCourseworks = async (req,res,next) => {
+module.exports.getCourseworks = async (req, res, next) => {
   try {
     const documents = await CourseWork.find()
     res.status(201).json({ message: "Coursework collection fetched successfully", success: true, documents });
@@ -33,7 +39,7 @@ module.exports.getCourseworks = async (req,res,next) => {
   }
 }
 
-module.exports.getCodes = async(req,res,next) => {
+module.exports.getCodes = async (req, res, next) => {
   try {
     const codes = await Code.find()
     res.status(201).json({ message: "Code collection fetched successfully", success: true, codes });

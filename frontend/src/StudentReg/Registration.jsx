@@ -6,9 +6,8 @@ import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-import { Table } from 'antd';
 
-const StudentReg = ({ onAddStudent }) => {
+const StudentReg = () => {
     const navigate = useNavigate();
     const [cookies, removeCookie] = useCookies([]);
     const [username, setUsername] = useState("");
@@ -50,7 +49,8 @@ const StudentReg = ({ onAddStudent }) => {
         dob: '',
         year: '',
         dept: '',
-        phoneNo: ''
+        phoneNo: '',
+        cgpa: ''
     });
 
     const handleChange = (e) => {
@@ -102,7 +102,8 @@ const StudentReg = ({ onAddStudent }) => {
             dob: '',
             year: '',
             dept: '',
-            phoneNo: ''
+            phoneNo: '',
+            cgpa: ''
         });
     };
 
@@ -163,6 +164,10 @@ const StudentReg = ({ onAddStudent }) => {
                                     <option value="MCA">MCA</option>
                                     <option value="MBA">MBA</option>
                                 </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="cgpa">CGPA:</label>
+                                <input type="number" id="cgpa" name="cgpa" value={student.cgpa} onChange={handleChange} max={10} required />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Password:</label>

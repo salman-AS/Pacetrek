@@ -39,12 +39,29 @@ const studentSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: new Date()
-    }
+    },
+    cgpa: {
+        type: Number
+    },
+    score: {
+        type: Number
+    },
+    aptitude: [{
+        id: String,
+        mark: Number
+    }],
+    coursework: [{
+        id: String,
+        mark: Number
+    }],
+    code: [{
+        id: String,
+        mark: Number
+    }]
 })
 
 studentSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, 12)
-    // this.dob = await this.dob.toLocaleDateString()
     next()
 })
 

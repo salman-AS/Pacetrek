@@ -54,7 +54,7 @@ module.exports.Login = async (req, res, next) => {
 
 module.exports.SignupStudent = async (req, res, next) => {
   try {
-    const { firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo } = req.body;
+    const { firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo, cgpa} = req.body;
     if (!email || !password || !firstName || !admissionNo) {
       return res.status(401).json({ message: 'All fields are required' })
     }
@@ -62,7 +62,8 @@ module.exports.SignupStudent = async (req, res, next) => {
     if (existingStudent) {
       return res.status(401).json({ message: "User already exists" })
     }
-    const student = await Student.create({ firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo });
+    const score = cgpa*10
+    const student = await Student.create({ firstName, lastName, email, password, admissionNo, dob, year, dept, phoneNo, cgpa, score });
     // const token = createSecretToken(student._id);
     // res.cookie("token", token, {
     //   withCredentials: true,

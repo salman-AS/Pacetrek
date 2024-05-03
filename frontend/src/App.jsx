@@ -10,13 +10,9 @@ import Event from './Eventupdates/Event';
 // import Help from './Help/Help';
 import Qclient from "./Quiz/Qclient";
 import Coding from './pages/Coding';
-<<<<<<< HEAD
 import Leaderboard from './pages/Leaderboard';
 import Stprofile from './profile/Stprofile';
 
-=======
-import Stprofile from './profile/Stprofile';
->>>>>>> f4bb98c3a004cdad016a28d5788a76e42ede56bf
 
 function App() {
   return (

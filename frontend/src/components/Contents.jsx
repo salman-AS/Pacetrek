@@ -5,13 +5,13 @@ import Cards from '../components/Cards';
 import Caldr from './Caldr'
 
 const Contents = ({ username, Logout }) => {
-  return (
-    <div className="contents">
-      <ContentHeader username={username} Logout={Logout} />
-      <Cards />
-      <Caldr />
+	return (
+		<div className="contents">
+			<ContentHeader username={username} Logout={Logout} />
+			<Cards />
+			<Caldr />
 
-    </div>
-  );
+		</div>
+	);
 };
 export default Contents;

@@ -19,11 +19,11 @@ router.put("/api/student/postCoursework/:id", putCoursework)
 router.put("/api/student/postCode/:id", putCode)
 
 router.post("/api/aptitude/add", postAptitude)
-router.get("/api/aptitude/getAll" , getAptitudes)
+router.get("/api/aptitude/getAll", getAptitudes)
 router.delete("/api/aptitude/delete/:id", deleteAptitude)
 
 router.post("/api/coursework/add", postCoursework)
-router.get("/api/coursework/getAll" , getCourseworks)
+router.get("/api/coursework/getAll", getCourseworks)
 router.delete("/api/coursework/delete/:id", deleteCoursework)
 
 router.post("/api/code/add", postCode)

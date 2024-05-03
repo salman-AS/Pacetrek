@@ -10,6 +10,8 @@ import Event from './Eventupdates/Event';
 // import Help from './Help/Help';
 import Qclient from "./Quiz/Qclient";
 import Coding from './pages/Coding';
+import Leaderboard from './pages/Leaderboard';
+import Stprofile from './profile/Stprofile';
 
 
 function App() {
@@ -27,10 +29,12 @@ function App() {
         <Route path="/admin/coursework" element={<Qclient option={'coursework'}/>} />
         <Route path="/admin/coding" element={<Coding />} />
         <Route path="/admin/event" element={<Event />} />
+        <Route path="/admin/leaderboard" element={<Leaderboard/>}/>
         {/* <Route path="/admin/help" element={<Help />} /> */}
 
         <Route path='/student/login' element={<Student_Login />} />
         <Route path='/student/dashboard' element={<Student_Dashboard />} />
+        <Route path='/student/profile' element={<Stprofile/>} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

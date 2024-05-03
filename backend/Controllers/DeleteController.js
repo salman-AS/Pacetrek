@@ -1,6 +1,7 @@
 const AptitudeModel = require("../Models/AptitudeModel");
 const Code = require("../Models/CodeModel");
 const CourseWorkModel = require("../Models/CourseWorkModel");
+const EventModel = require("../Models/EventModel");
 
 module.exports.deleteCode = async (req, res, next) => {
     try {
@@ -38,6 +39,20 @@ module.exports.deleteAptitude = async (req, res, next) => {
         }
         const aptitude = await AptitudeModel.findByIdAndDelete(id);
         res.status(201).json({ message: "Aptitude quiz deleted successfully", success: true, aptitude });
+        next();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+module.exports.deleteEvent = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        if (!id) {
+            return res.status(401).json({ message: 'No event id received' })
+        }
+        const event = await EventModel.findByIdAndDelete(id);
+        res.status(201).json({ message: "Event deleted successfully", success: true, event });
         next();
     } catch (error) {
         console.error(error);

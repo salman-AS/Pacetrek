@@ -1,4 +1,65 @@
-.calendartitle{
+.calendartitle {
     color: #526d82;
-    padding:30px 0;
+    padding: 30px 0;
+}
+
+/* caldr.css */
+
+/* Main container */
+.calendar-container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    /* Adjust the maximum width based on your design */
+}
+
+/* Title */
+.calendartitle {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Calendar */
+.fc {
+    max-width: 100%;
+}
+
+/* Event title */
+.fc-title {
+    font-size: 18px;
+}
+
+/* Event details */
+.fc-event {
+    font-size: 16px;
+}
+
+/* Day header */
+.fc-day-header {
+    font-size: 14px;
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 600px) {
+
+    /* Adjustments for smaller screens */
+    .calendar-container {
+        padding: 10px;
+    }
+
+    .calendartitle {
+        font-size: 20px;
+    }
+
+    .fc-title {
+        font-size: 16px;
+    }
+
+    .fc-event {
+        font-size: 14px;
+    }
+
+    .fc-day-header {
+        font-size: 12px;
+    }
 }

@@ -2,6 +2,7 @@ const Student = require("../Models/StudentModel");
 const Aptitude = require("../Models/AptitudeModel");
 const CourseWork = require("../Models/CourseWorkModel");
 const Code = require("../Models/CodeModel");
+const EventModel = require("../Models/EventModel");
 
 module.exports.getStudents = async (req, res, next) => {
   try {
@@ -43,6 +44,22 @@ module.exports.getCodes = async (req, res, next) => {
   try {
     const codes = await Code.find()
     res.status(201).json({ message: "Code collection fetched successfully", success: true, codes });
+    next();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports.getEvents = async (req, res, next) => {
+  try {
+    const oldevents = await EventModel.find()
+    const events = oldevents.map(event => {
+      const { _id, eventName, eventDetails, eventDate, file, __v } = event
+      const eventDateString = eventDate.toString()
+      const newEvent = { _id, eventName, eventDetails, eventDate, eventDateString, file, __v }
+      return newEvent
+    })
+    res.status(201).json({ message: "Code collection fetched successfully", success: true, events });
     next();
   } catch (error) {
     console.error(error);

@@ -122,7 +122,7 @@ const Qclient = ({ option }) => {
         {},
         { withCredentials: true }
       );
-      const { success, message, documents } = data;
+      const { success, message } = data;
       console.log(data)
     } catch (error) {
       console.log(error);

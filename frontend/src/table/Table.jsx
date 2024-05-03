@@ -31,32 +31,19 @@ const Table = () => {
         }
     }
 
-    const getRank = async (id) => {
+    const getRank = (student) => {
         let rank = 0
         try {
-            const { data } = await axios.get(
-                "http://localhost:4000/api/student/getStudents",
-                {},
-                { withCredentials: true }
-            )
-            const students = data.students
-            const sortedStudents = students.sort((a, b) => {
-                console.log(a.score, b.score)
-                if (a.score > b.score)
-                    return a;
-                else
-                    return b;
-            }).map(student => student._id)
-            const rankedStudents = sortedStudents.reverse()
-            rank = rankedStudents.indexOf(id)+1
-            console.log(rankedStudents)
+            const sortedStudents = students.sort((a, b) => b.score - a.score)
+            rank = sortedStudents.indexOf(student) + 1
+            console.log('getrank', sortedStudents)
         } catch (error) {
             console.log(error)
         }
         console.log(rank)
         return rank
     }
-    
+
 
     const verifyCookie = async () => {
         console.log(cookies)
@@ -94,7 +81,7 @@ const Table = () => {
     const handleViewClick = async (student) => {
         // Set form data and show the modal
         // console.log(typeof(getRank(student._id)))
-        let rank = await getRank(student._id)
+        let rank = await getRank(student)
         console.log(rank)
         setFormData({
             name: student.firstName + ' ' + student.lastName,

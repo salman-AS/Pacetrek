@@ -16,7 +16,7 @@ const Sidebar = () => {
         <div className="menu">
             <div className="logo">
                 <GiSkills className="logo-icon" />
-                <h2>PACETREK</h2>
+                <h1>PACETREK</h1>
             </div>
             <div className="menu--list">
                 <Link to="/dashboard" className={`item ${location.pathname === '/admin/' ? 'active' : ''}`}>

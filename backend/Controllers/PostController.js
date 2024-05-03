@@ -1,6 +1,7 @@
 const Aptitude = require("../Models/AptitudeModel");
 const CourseWork = require("../Models/CourseWorkModel");
-const Code = require("../Models/CodeModel")
+const Code = require("../Models/CodeModel");
+const EventModel = require("../Models/EventModel");
 
 module.exports.postAptitude = async (req, res, next) => {
     try {
@@ -38,6 +39,20 @@ module.exports.postCode = async (req, res, next) => {
         }
         const code = await Code.create({ title, lcLink, ytLink, difficulty });
         res.status(201).json({ message: "Coding challenge uploaded successfully", success: true, code });
+        next();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+module.exports.postEvent = async (req, res, next) => {
+    try {
+        const { eventName, eventDetails, eventDate, file } = req.body;
+        if (!eventName || !eventDetails || !eventDate) {
+            return res.status(401).json({ message: 'All fields are required' })
+        }
+        const event = await EventModel.create({ eventName, eventDetails, eventDate, file });
+        res.status(201).json({ message: "Event created successfully", success: true, event });
         next();
     } catch (error) {
         console.error(error);

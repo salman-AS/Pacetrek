@@ -30,6 +30,7 @@
 
 .event-form input[type="text"],
 .event-form input[type="file"],
+input[type="datetime-local"],
 .previous-events input[type="text"],
 .previous-events input[type="file"] {
   width: 100%;

@@ -1,7 +1,7 @@
 const { Signup, Login, SignupStudent, LoginStudent } = require("../Controllers/AuthController");
-const { deleteCode, deleteAptitude, deleteCoursework } = require("../Controllers/DeleteController");
-const { getStudents, getAptitudes, getCourseworks, getCodes } = require("../Controllers/GetController");
-const { postAptitude, postCoursework, postCode } = require("../Controllers/PostController");
+const { deleteCode, deleteAptitude, deleteCoursework, deleteEvent } = require("../Controllers/DeleteController");
+const { getStudents, getAptitudes, getCourseworks, getCodes, getEvents } = require("../Controllers/GetController");
+const { postAptitude, postCoursework, postCode, postEvent } = require("../Controllers/PostController");
 const { userVerification, studentVerification } = require("../Middlewares/AuthMiddleware");
 const router = require("express").Router();
 
@@ -25,5 +25,9 @@ router.delete("/api/coursework/delete/:id", deleteCoursework)
 router.post("/api/code/add", postCode)
 router.get("/api/code/getAll", getCodes)
 router.delete("/api/code/delete/:id", deleteCode)
+
+router.post("/api/event/add", postEvent)
+router.get("/api/event/getAll", getEvents)
+router.delete("/api/event/delete/:id", deleteEvent)
 
 module.exports = router;

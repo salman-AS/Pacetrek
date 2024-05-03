@@ -1,0 +1,35 @@
+import React from 'react';
+import { BsFillPersonFill,BsFillPersonCheckFill } from "react-icons/bs";
+import { MdAssuredWorkload } from "react-icons/md";
+const course=[
+    {
+        title:"No.of Students",
+        icon:<BsFillPersonFill  />,
+    },
+    {
+        title:"Completed Quiz",
+        icon:<BsFillPersonCheckFill />,
+    },
+    {
+        title:"students Placed",
+        icon:<MdAssuredWorkload />,
+    },
+];
+
+let i = 1;
+
+const cards2 = () => {
+    return (
+        <div className="card--container">
+          {course.map((item) => (
+          <div className="card" key={i++}>
+                    <div className="card--cover">{item.icon}</div>
+                    <div className="card--title">
+                        <h2>{item.title}</h2>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+export default cards2;

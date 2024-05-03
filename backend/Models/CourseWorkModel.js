@@ -4,13 +4,16 @@ const questionSchema = new mongoose.Schema({
     question: {
         type: String
     },
-    options: [String]
+    options: [String],
+    correctAnswer: {
+        type: String
+    }
 })
 
 const courseworkSchema = new mongoose.Schema({
     title: {
-     type: String,
-     required: [true,"Title is required"],
+        type: String,
+        required: [true, "Title is required"],
     },
     questions: [questionSchema],
     createdAt: {
@@ -19,4 +22,4 @@ const courseworkSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Coursework',courseworkSchema)
+module.exports = mongoose.model('Coursework', courseworkSchema)

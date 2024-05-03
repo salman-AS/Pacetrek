@@ -4,13 +4,16 @@ const questionSchema = new mongoose.Schema({
     question: {
         type: String
     },
-    options: [String]
+    options: [String],
+    correctAnswer: {
+        type: String
+    }
 })
 
 const aptitudeSchema = new mongoose.Schema({
     title: {
-     type: String,
-     required: [true,"Title is required"],
+        type: String,
+        required: [true, "Title is required"],
     },
     questions: [questionSchema],
     createdAt: {
@@ -19,4 +22,4 @@ const aptitudeSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Aptitude',aptitudeSchema)
+module.exports = mongoose.model('Aptitude', aptitudeSchema)

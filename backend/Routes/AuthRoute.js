@@ -2,6 +2,7 @@ const { Signup, Login, SignupStudent, LoginStudent } = require("../Controllers/A
 const { deleteCode, deleteAptitude, deleteCoursework, deleteEvent } = require("../Controllers/DeleteController");
 const { getStudents, getAptitudes, getCourseworks, getCodes, getEvents } = require("../Controllers/GetController");
 const { postAptitude, postCoursework, postCode, postEvent } = require("../Controllers/PostController");
+const { putAptitude, putCoursework, putCode } = require("../Controllers/PutController");
 const { userVerification, studentVerification } = require("../Middlewares/AuthMiddleware");
 const router = require("express").Router();
 
@@ -13,6 +14,9 @@ router.post("/api/student", studentVerification);
 router.post("/api/student/signup", SignupStudent);
 router.post("/api/student/login", LoginStudent);
 router.get("/api/student/getStudents", getStudents)
+router.put("/api/student/postAptitude/:id", putAptitude)
+router.put("/api/student/postCoursework/:id", putCoursework)
+router.put("/api/student/postCode/:id", putCode)
 
 router.post("/api/aptitude/add", postAptitude)
 router.get("/api/aptitude/getAll" , getAptitudes)

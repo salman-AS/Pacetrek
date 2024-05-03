@@ -43,7 +43,7 @@ const Qclient = ({ option }) => {
   };
 
   const [title, setTitle] = useState('')
-  const [questions, setQuestions] = useState([{ question: '', options: [''] }]);
+  const [questions, setQuestions] = useState([{ question: '', options: [''], correctAnswer: '' }]);
 
   const handleQuestionChange = (index, value) => {
     const newQuestions = [...questions];
@@ -57,8 +57,14 @@ const Qclient = ({ option }) => {
     setQuestions(newQuestions);
   };
 
+  const handleCorrectAnswerChange = (questionIndex, value) => {
+    const newQuestions = [...questions];
+    newQuestions[questionIndex].correctAnswer = value;
+    setQuestions(newQuestions);
+  };
+
   const addQuestion = () => {
-    setQuestions([...questions, { question: '', options: [''] }]);
+    setQuestions([...questions, { question: '', options: [''], correctAnswer: '' }]);
   };
 
   const removeQuestion = (index) => {
@@ -111,7 +117,7 @@ const Qclient = ({ option }) => {
     }
     getData()
     setTitle('')
-    setQuestions([{ question: '', options: [''] }])
+    setQuestions([{ question: '', options: [''], correctAnswer: '' }])
   };
 
   const remove = async (id) => {
@@ -197,6 +203,15 @@ const Qclient = ({ option }) => {
                     ))}
 
                   </div>
+                  <div>
+                    <label>Correct Answer:</label>
+                    <input
+                      type="text"
+                      value={question.correctAnswer}
+                      onChange={(e) => handleCorrectAnswerChange(index, e.target.value)}
+                      placeholder="Enter correct answer"
+                    />
+                  </div>
                 </div>
               ))}
               <button onClick={addQuestion}>Add Question</button>
@@ -207,7 +222,7 @@ const Qclient = ({ option }) => {
           </div>
           <div className='CodeTable'>
             <Table dataSource={data} className='table'>
-              <Column title="Title" dataIndex="title" key="title"/>
+              <Column title="Title" dataIndex="title" key="title" />
               <Column
                 title="Action"
                 dataIndex="_id"

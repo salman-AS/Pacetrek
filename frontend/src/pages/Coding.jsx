@@ -179,14 +179,14 @@ const Coding = () => {
                         <Table dataSource={data} className='table'>
                             <Column title="Title" key="title" render={(key) => {
                                 return (
-                                    <Link href={key.lcLink}>
+                                    <Link href={key.lcLink} target="_blank">
                                         {key.title}
                                     </Link>
                                 );
                             }}/>
                             <Column title="Video Solution" className='center' dataIndex="ytLink" key="ytLink" render={(ytLink) => {
                                 return (
-                                    <Link href={ytLink}>
+                                    <Link href={ytLink} target="_blank">
                                         <BiSolidVideo size={30}/>
                                     </Link>
                                 );

@@ -1,18 +1,6 @@
 const StudentModel = require("../Models/StudentModel")
 const { getScore } = require("../util/Score")
 
-notesRouter.put('/:id', async (request, response) => {
-    const body = request.body
-
-    const note = {
-        content: body.content,
-        important: body.important,
-    }
-
-    const updatedNote = await Note.findByIdAndUpdate(request.params.id, note, { new: true })
-    response.json(updatedNote)
-})
-
 module.exports.putCoursework = async (req, res, next) => {
     try {
         const { studentid, id, mark } = req.body;

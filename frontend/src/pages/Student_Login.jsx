@@ -123,4 +123,8 @@ const Student_Login = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Student_Login;
+=======
+export default Student_Login;
+>>>>>>> f4bb98c3a004cdad016a28d5788a76e42ede56bf

@@ -1,0 +1,52 @@
+/* Styles for the notification panel container */
+.notification-panel {
+    border: 1px solid #111111;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    max-width: 100%; /* Ensures panel doesn't exceed screen width */
+}
+
+/* Styles for the notification heading */
+.notification-panel h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* Styles for the notification list */
+.notification-panel ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Styles for individual notifications */
+.notification {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-left: 3px solid transparent;
+}
+
+/* Styles for different types of notifications */
+.notification.event {
+    border-left-color: #2196f3; /* Blue color for event notifications */
+}
+
+.notification.placement {
+    border-left-color: #4caf50; /* Green color for placement notifications */
+}
+
+.notification.quiz {
+    border-left-color: #ff9800; /* Orange color for quiz notifications */
+}
+
+/* Media query for screens smaller than 768px (typical mobile devices) */
+@media (max-width: 768px) {
+    .notification-panel {
+        padding: 5px; /* Decrease padding for smaller screens */
+    }
+    
+    .notification-panel h3 {
+        font-size: 1em; /* Decrease font size for heading */
+    }
+}

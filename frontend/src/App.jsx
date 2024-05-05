@@ -1,37 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Contents from './components/Contents';
+import Contents from './components/Content';
+import EventReceiver from './Events/events';
+import NotificationPanel from './Notification/notific';
+import PerformanceMatrix from './Performance/matrix';
+
 import './App.css';
-import StudentReg from "./StudentReg/Registration";
-import Table from './table/Table';
-import Quizoption from './Quiz/Quizoption';
-import Event from './Eventupdates/Event';
-import Help from './Help/Help';
-import Aptitude from './Quiz/Qclient';
-import Coding from './Quiz/Coding';
-import Leaderboard from './LeaderBoard/Leaderboard';
 const App = () => {
   return (
-    <Router> 
-         {/* Wrap the entire application with Router */}
-          <div className='dashboard'>
+    <Router> {/* Wrap the entire application with Router */}
+          <div className='dashboard'> 
             <Sidebar />
             <div className="dashboard--contents">
             <Routes>
             <Route path="/" element={<Contents />} />
-            <Route path="/studentreg" element={<StudentReg/>}/>
-            <Route path="/table" element={<Table/>}/>
-            <Route path="/quizo" element={<Quizoption/>}/>
-            <Route path="/event" element={<Event/>}/>
-            <Route path="/help" element={<Help/>}/>
-            <Route path="/quizo/Aptitude" element={<Aptitude/>}/>
-            <Route path="/quizo/Coding" element={<Coding/>}/>
-            <Route path="/leaderboard" element={<Leaderboard/>}/>
+            <Route path="/Eventupdates" element={<EventReceiver />} />
+            <Route path="/Notifications" element={<NotificationPanel />} />
+            <Route path="/PerformanceMatrix" element={<PerformanceMatrix />} />
           </Routes>
         </div>
       </div>
     </Router>
   );
 };
-export default App;
+export default App;

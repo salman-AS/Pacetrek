@@ -1,59 +1,65 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { CgProfile } from "react-icons/cg";
 import {
     BiHome,
     BiHelpCircle,
 } from 'react-icons/bi';
-import { BsClipboardData , BsFillPersonFill} from "react-icons/bs";
-import { MdOutlineQuiz, MdLeaderboard, MdOutlineEventNote, MdNotificationsActive } from "react-icons/md";
+import { MdSettingsSuggest } from "react-icons/md";
+import { MdOutlineQuiz,
+    MdLeaderboard ,
+    MdOutlineEventNote,
+    MdNotificationsActive} from "react-icons/md";
 import { GiSkills } from "react-icons/gi";
 import '../styles/Sidebar.css';
-
 const Sidebar = () => {
-    const location = useLocation();
-
+    const handleClick = () =>{
+        console.log("link clicked");
+    };
     return(
         <div className="menu">
             <div className="logo">
                 <GiSkills className="logo-icon" />
                 <h2>PACETREK</h2>
             </div>
+
             <div className="menu--list">
-                <Link to="/" className={`item ${location.pathname === '/' ? 'active' : ''}`}>
+                <Link to="/" className="item">
                     <BiHome className="icon"/>
                     Dashboard
                 </Link>
-                <Link to="/studentreg" className={`item ${location.pathname === '/studentreg' ? 'active' : ''}`}>
-                    <BsFillPersonFill className="icon"/>
-                    Student Registration
-                </Link>
-                <Link to="/table" className={`item ${location.pathname === '/table' ? 'active' : ''}`}>
-                    <BsClipboardData className="icon" />
-                    Student Evaluation
-                </Link>
-                <Link to="/quizo" className={`item ${location.pathname === '/quizo' ? 'active' : ''}`}>
+                <a href="#" className="item">
+                    <CgProfile className="icon"/>
+                    Profile
+                </a>
+                <Link to="/quiz" className="item">
                     <MdOutlineQuiz className="icon"/>
                     Skill Development
                 </Link>
-                <Link to="/leaderboard" className={`item ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
+                
+                <Link to="/PerformanceMatrix" className="item">
                     <MdLeaderboard className="icon"/>
-                    Leader Board
+                    Performance Matrix
                 </Link>
-                <Link to="/event" className={`item ${location.pathname === '/event' ? 'active' : ''}`}>
+                <Link to="/Eventupdates" className="item">
                     <MdOutlineEventNote className="icon"/>
                     Event Updates
                 </Link>
-                <Link to="/notifications" className={`item ${location.pathname === '/notifications' ? 'active' : ''}`}>
+                <Link to="/Notifications" className="item">
                     <MdNotificationsActive className="icon"/>
                     Notifications
                 </Link>
-                <Link to="/help" className={`item ${location.pathname === '/help' ? 'active' : ''}`}>
+                <a href="#" className="item">
+                    <MdSettingsSuggest  className="icon"/>
+                    Profile Settings
+                </a>
+                <a href="#" className="item">
                     <BiHelpCircle className="icon"/>
                     Help
-                </Link>
+                </a>
             </div>
         </div>
     );
 };
 
-export default Sidebar;
+export default Sidebar

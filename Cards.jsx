@@ -12,7 +12,7 @@ const course = [
     {
         title: "Quiz Alerts",
         icon: <MdQuiz />,
-        link: "/quiz"
+        link: "/SkillDevelopment"
     },
     {
         title: "Leaderboard",

@@ -28,11 +28,11 @@ const Sidebar = () => {
                     <BiHome className="icon"/>
                     Dashboard
                 </Link>
-                <a href="#" className="item">
+                <Link to='/Profile' className="item">
                     <CgProfile className="icon"/>
                     Profile
-                </a>
-                <Link to="/quiz" className="item">
+                </Link>
+                <Link to="/SkillDevelopment" className="item">
                     <MdOutlineQuiz className="icon"/>
                     Skill Development
                 </Link>
@@ -49,10 +49,10 @@ const Sidebar = () => {
                     <MdNotificationsActive className="icon"/>
                     Notifications
                 </Link>
-                <a href="#" className="item">
+                <Link to="/Profilesettings" className="item">
                     <MdSettingsSuggest  className="icon"/>
                     Profile Settings
-                </a>
+                </Link>
                 <a href="#" className="item">
                     <BiHelpCircle className="icon"/>
                     Help

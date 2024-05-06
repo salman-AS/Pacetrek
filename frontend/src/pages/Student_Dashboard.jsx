@@ -12,41 +12,42 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 const Student_Dashboard = () => {
 	const navigate = useNavigate();
-	//   const [cookies, removeCookie] = useCookies([]);
-	//   const [username, setUsername] = useState("");
+	const [cookies, removeCookie] = useCookies([]);
+	const [username, setUsername] = useState("");
+	const [student, setStudent] = useState({});
 
-	//   useEffect(() => {
-	//     console.log(cookies)
-	//     verifyCookie();
-	//   }, [cookies, navigate, removeCookie]);
+	useEffect(() => {
+		console.log(cookies)
+		verifyCookie();
+	}, [cookies, navigate, removeCookie]);
 
-	//   const verifyCookie = async () => {
-	//     console.log(cookies)
-	//     if (!cookies.token || cookies.token === 'undefined' || cookies.token === undefined) {
-	//       console.log(cookies)
-	//       removeCookie("token")
-	//       navigate("/")
-	//     }
-	//     const { data } = await axios.post(
-	//       "http://localhost:4000/api/admin",
-	//       {},
-	//       { withCredentials: true }
-	//     );
-	//     const { status, user } = data;
+	const verifyCookie = async () => {
+		console.log(cookies)
+		if (!cookies.token || cookies.token === 'undefined' || cookies.token === undefined) {
+			console.log(cookies)
+			removeCookie("token")
+			navigate("/")
+		}
+		const { data } = await axios.post(
+			"http://localhost:4000/api/student",
+			{},
+			{ withCredentials: true }
+		);
+		const { status, student, user } = data;
 
-	//     console.log(data)
-
-	//     setUsername(user);
-	//     return status
-	//       ? /* toast(`Hello ${user}`, {
-	//         position: "top-right",
-	//     }) */console.log(cookies)
-	//     : (removeCookie("token"), navigate("/admin/login"));
-	//};
+		console.log(data)
+		setStudent(student)
+		setUsername(user.username);
+		return status
+			? /* toast(`Hello ${user}`, {
+	        position: "top-right",
+	    }) */console.log(cookies)
+			: (removeCookie("token")/* , navigate("/student/login") */);
+	};
 
 	const Logout = () => {
 		removeCookie("token");
-		navigate("/student/login");
+		navigate("/");
 	};
 
 	return (
@@ -54,7 +55,7 @@ const Student_Dashboard = () => {
 			<div className='dashboard'>
 				<Sidebar />
 				<div className="dashboard--contents">
-					<Contents />
+					<Contents username={username} Logout={Logout} />
 					<div className="basic">
 					</div>
 				</div>

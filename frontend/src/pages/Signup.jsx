@@ -103,6 +103,7 @@ const Signup = () => {
 					<div>
 						<label htmlFor="email">Email</label>
 						<input
+							required
 							type="email"
 							name="email"
 							value={email}
@@ -113,6 +114,7 @@ const Signup = () => {
 					<div>
 						<label htmlFor="email">Username</label>
 						<input
+							required
 							type="text"
 							name="username"
 							value={username}
@@ -123,6 +125,7 @@ const Signup = () => {
 					<div>
 						<label htmlFor="password">Password</label>
 						<input
+							required
 							type="password"
 							name="password"
 							value={password}

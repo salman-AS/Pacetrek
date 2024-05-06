@@ -57,7 +57,16 @@ const studentSchema = new mongoose.Schema({
 	code: [{
 		id: String,
 		mark: Number
-	}]
+	}],
+	certificates: [{
+		type: String
+	}],
+	resume: {
+		type: String
+	},
+	profilePic: {
+		type: String
+	}
 })
 
 studentSchema.pre('save', async function (next) {

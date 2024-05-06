@@ -180,9 +180,6 @@ const StudentReg = () => {
                 </div>
             </div>
         </div>
-
-
-
     );
 };
 

@@ -1,18 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { CgProfile } from "react-icons/cg";
 import {
     BiHome,
     BiHelpCircle,
 } from 'react-icons/bi';
-import { BsClipboardData } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
-import { SiElectronbuilder } from "react-icons/si";
+import { MdSettingsSuggest } from "react-icons/md";
 import { MdOutlineQuiz,
     MdLeaderboard ,
     MdOutlineEventNote,
-    MdNotificationsActive,} from "react-icons/md";
+    MdNotificationsActive} from "react-icons/md";
 import { GiSkills } from "react-icons/gi";
 import '../styles/Sidebar.css';
-const sidebar2 = () => {
+const Sidebar = () => {
+    const handleClick = () =>{
+        console.log("link clicked");
+    };
     return(
         <div className="menu">
             <div className="logo">
@@ -21,31 +24,35 @@ const sidebar2 = () => {
             </div>
 
             <div className="menu--list">
-                <a href="#" className="item">
+                <Link to="/student/dashboard" className="item">
                     <BiHome className="icon"/>
                     Dashboard
-                </a>
-                <a href="" className="item">
-                    <CgProfile className="icon" />
+                </Link>
+                <Link to='/student/Profile' className="item">
+                    <CgProfile className="icon"/>
                     Profile
-                </a>
-                <a href="#" className="item">
-                    <SiElectronbuilder className="icon"/>
+                </Link>
+                <Link to="/student/SkillDevelopment" className="item">
+                    <MdOutlineQuiz className="icon"/>
                     Skill Development
-                </a>
+                </Link>
                 
-                <a href="#" className="item">
+                <Link to="/student/PerformanceMatrix" className="item">
                     <MdLeaderboard className="icon"/>
-                    Performance Metrics
-                </a>
-                <a href="#" className="item">
+                    Performance Matrix
+                </Link>
+                <Link to="/student/Eventupdates" className="item">
                     <MdOutlineEventNote className="icon"/>
                     Event Updates
-                </a>
-                <a href="#" className="item">
+                </Link>
+                <Link to="/student/Notifications" className="item">
                     <MdNotificationsActive className="icon"/>
                     Notifications
-                </a>
+                </Link>
+                <Link to="/student/Profilesettings" className="item">
+                    <MdSettingsSuggest  className="icon"/>
+                    Profile Settings
+                </Link>
                 <a href="#" className="item">
                     <BiHelpCircle className="icon"/>
                     Help
@@ -55,4 +62,4 @@ const sidebar2 = () => {
     );
 };
 
-export default sidebar2
+export default Sidebar

@@ -1,0 +1,41 @@
+/* viewProfileStyles.css */
+
+.profile-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .profile-view h2 {
+    color: #526d82;
+    margin-bottom: 15px;
+  }
+  
+  .profile-view div {
+    margin-bottom: 10px;
+  }
+  
+  .profile-view strong {
+    font-weight: bold;
+  }
+  
+  .profile-view a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Style for profile picture */
+  .profile-pic img {
+    border-radius: 50%;
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+  }

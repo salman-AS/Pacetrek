@@ -3,6 +3,7 @@ const Aptitude = require("../Models/AptitudeModel");
 const CourseWork = require("../Models/CourseWorkModel");
 const Code = require("../Models/CodeModel");
 const EventModel = require("../Models/EventModel");
+const NotificationModel = require("../Models/NotificationModel");
 
 module.exports.getStudents = async (req, res, next) => {
 	try {
@@ -59,7 +60,17 @@ module.exports.getEvents = async (req, res, next) => {
 			const newEvent = { _id, eventName, eventDetails, eventDate, eventDateString, file, __v }
 			return newEvent
 		})
-		res.status(201).json({ message: "Code collection fetched successfully", success: true, events });
+		res.status(201).json({ message: "Events collection fetched successfully", success: true, events });
+		next();
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+module.exports.getNotifs = async (req, res, next) => {
+	try {
+		const notifications = await NotificationModel.find()
+		res.status(201).json({ message: "Notifications fetched successfully", success: true, notifications });
 		next();
 	} catch (error) {
 		console.error(error);

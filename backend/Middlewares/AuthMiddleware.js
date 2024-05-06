@@ -29,8 +29,9 @@ module.exports.studentVerification = (req, res) => {
 			return res.json({ status: false });
 		} else {
 			const student = await Student.findById(data.id);
+			const user = { username: student.firstName + ' ' + student.lastName }
 			if (student)
-				return res.json({ status: true, student });
+				return res.json({ status: true, student, user });
 			else
 				return res.json({ status: false });
 		}

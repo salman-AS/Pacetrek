@@ -82,6 +82,7 @@ const Login = () => {
 			}
 		} catch (error) {
 			console.log(error);
+			handleError('Sorry! Couldn\'t login')
 		}
 		setInputValue({
 			...inputValue,
@@ -103,6 +104,7 @@ const Login = () => {
 							value={email}
 							placeholder="Enter your email"
 							onChange={handleOnChange}
+							required
 						/>
 					</div>
 					<div>
@@ -113,6 +115,7 @@ const Login = () => {
 							value={password}
 							placeholder="Enter your password"
 							onChange={handleOnChange}
+							required
 						/>
 					</div>
 					<button type="submit">Submit</button>

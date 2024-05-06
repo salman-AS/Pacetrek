@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.test-container {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #526d86;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.test-container h3 {
+    margin-top: 0;
+    color: #526d86;
+}
+
+.test-container h4 {
+    margin-bottom: 10px;
+    color: #526d86;
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .chart-container,
+    .test-container {
+        width: 45%;
+    }
+}

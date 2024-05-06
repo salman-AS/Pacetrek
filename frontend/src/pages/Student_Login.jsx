@@ -18,15 +18,15 @@ const Student_Login = () => {
 			return;
 		}
 		const { data } = await axios.post(
-			"http://localhost:4000/api/admin",
+			"http://localhost:4000/api/student",
 			{},
 			{ withCredentials: true }
 		);
 		const { status } = data;
 		console.log(data)
 		return status
-			? navigate('/dashboard')
-			: (removeCookie("token"), navigate("/Student/login"));
+			? navigate('/student/dashboard')
+			: (removeCookie("token")/* , navigate("/Student/login") */);
 	};
 
 	useEffect(() => {
@@ -63,7 +63,7 @@ const Student_Login = () => {
 		e.preventDefault();
 		try {
 			const { data } = await axios.post(
-				"http://localhost:4000/api/admin/login",
+				"http://localhost:4000/api/student/login",
 				{
 					...inputValue,
 				},
@@ -75,13 +75,14 @@ const Student_Login = () => {
 				handleSuccess(message);
 				setTimeout(() => {
 					console.log(cookies)
-					navigate("/dashboard");
+					navigate("/student/dashboard");
 				}, 1000);
 			} else {
 				handleError(message);
 			}
 		} catch (error) {
-			console.log(error);
+			console.log(error)
+			handleError('Sorry! Some error occured. Please try again')
 		}
 		setInputValue({
 			...inputValue,
@@ -98,6 +99,7 @@ const Student_Login = () => {
 					<div>
 						<label htmlFor="email">Email</label>
 						<input
+							required
 							type="email"
 							name="email"
 							value={email}
@@ -108,6 +110,7 @@ const Student_Login = () => {
 					<div>
 						<label htmlFor="password">Password</label>
 						<input
+							required
 							type="password"
 							name="password"
 							value={password}

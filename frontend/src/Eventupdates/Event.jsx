@@ -233,7 +233,6 @@ const EventForm = () => {
 							</div>
 						))}
 					</div>
-					{/* </div> */}
 
 					<ToastContainer />
 				</div>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import "../styles/contents.css";
+import "../styles/Content.css";
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import axios from 'axios';
+import axios from 'axios'
+import '../styles/Calender.css'
 
 const CalendarComponent = () => {
 	const [events, setEvents] = useState([]); // State to store events

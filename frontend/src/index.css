@@ -10,6 +10,12 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+body {
+  display: block;
+  background: #dde6ed;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .dashboard-body {
   display: block;
   background: #dde6ed;

@@ -44,7 +44,7 @@ const Dashboard = () => {
 
 	const Logout = () => {
 		removeCookie("token");
-		navigate("/admin/login");
+		navigate("/");
 	};
 
 	return (

@@ -12,6 +12,10 @@ import Qclient from "./Quiz/Qclient";
 import Coding from './pages/Coding';
 import Leaderboard from './pages/Leaderboard';
 import Stprofile from './profile/Stprofile';
+import Test from './Hskill/Test';
+import Result from './Hskill/Result';
+import Home1 from './Hskill/Home1';
+
 
 
 function App() {
@@ -35,6 +39,11 @@ function App() {
         <Route path='/student/login' element={<Student_Login />} />
         <Route path='/student/dashboard' element={<Student_Dashboard />} />
         <Route path='/student/profile' element={<Stprofile/>} />
+         <Route path="/student/home" element={<Home1 />} />
+        <Route path="/student/home/aptitude" element={<Test option={'aptitude'} />} />
+        <Route path="/student/cousework" element={<Test option={'coursework'} />} />
+        <Route path="/student/coding" element={<Test option={'coding'} />} />
+        <Route path="/student/result" element={<Result />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

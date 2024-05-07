@@ -31,10 +31,38 @@ module.exports.getAptitudes = async (req, res, next) => {
 	}
 }
 
+module.exports.getAptitude = async (req, res, next) => {
+	try {
+		const id = req.params.id
+		const document = await Aptitude.findById(id)
+		if (document)
+			res.status(201).json({ message: "Aptitude fetched successfully", success: true, document });
+		else
+			res.json({ message: 'Document does not exist', success: false }).status(401)
+		next();
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 module.exports.getCourseworks = async (req, res, next) => {
 	try {
 		const documents = await CourseWork.find()
 		res.status(201).json({ message: "Coursework collection fetched successfully", success: true, documents });
+		next();
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+module.exports.getCoursework = async (req, res, next) => {
+	try {
+		const id = req.params.id
+		const document = await CourseWork.findById(id)
+		if (document)
+			res.status(201).json({ message: "Coursework fetched successfully", success: true, document });
+		else
+			res.json({ message: 'Document does not exist', success: false }).status(401)
 		next();
 	} catch (error) {
 		console.error(error);

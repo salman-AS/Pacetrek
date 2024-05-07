@@ -12,17 +12,17 @@ const course = [
     {
         title: "Aptitude Reasoning",
         icon: <IoExtensionPuzzleOutline />,
-        link: "/", // Define the route for each card
+        link: "/student/aptitude", // Define the route for each card
     },
     {
         title: "Course Work",
         icon: <IoBookOutline />,
-        link: "/",
+        link: "/student/cousework",
     },
     {
         title: "Coding",
         icon: <BsCodeSlash />,
-        link: "/",
+        link: "/student/coding",
     },
 ];
 
@@ -73,12 +73,14 @@ const Quizo = () => {
                         <h2 className="quizopt-heading">Skill Development System</h2>
                         <div className="quizopt--container">
                             {course.map((item) => (
-                                <div key={item.title} className="quizopt">
-                                    <div className="quizopt--cover">{item.icon}</div>
-                                    <div className="quizopt--title">
-                                        <h2>{item.title}</h2>
+                                <Link to={item.link} key={item.title}> {/* Wrap each card with Link */}
+                                    <div className="quizopt">
+                                        <div className="quizopt--cover">{item.icon}</div>
+                                        <div className="quizopt--title">
+                                            <h2>{item.title}</h2>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

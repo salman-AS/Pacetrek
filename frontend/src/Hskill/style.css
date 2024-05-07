@@ -1,0 +1,25 @@
+#testContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    padding: 25px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+label {
+    color: black;
+    font-weight: 500;
+}
+
+.options {
+    padding: 10px;
+}
+
+.question {
+    margin: 15px;
+}
+
+button {
+    margin-top: 20px;
+}

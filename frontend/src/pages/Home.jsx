@@ -2,9 +2,15 @@ import { Button, Card, Flex, Typography } from "antd";
 import React from "react"
 import { useNavigate } from "react-router-dom";
 import '../index.css'
+import { useCookies } from "react-cookie";
 
 const Home = () => {
     const navigate = useNavigate();
+    
+    const [cookies, removeCookie] = useCookies([]);
+    removeCookie("token")
+    console.log(cookies)
+
 
     return (
         <Flex gap='large' align="center" justify="center" className="home-body">

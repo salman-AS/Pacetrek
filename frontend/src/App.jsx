@@ -19,6 +19,8 @@ import Profile from './ProfileSettings/profilesettings'
 import ViewProfile from './Profile/profile';
 import Quizo from './SkillDev/skill';
 import Notification from './NotificationAdmin/Notification';
+import TestPage from './Hskill/Test';
+import QList from './Hskill/Quizlist';
 
 function App() {
   return (
@@ -48,6 +50,11 @@ function App() {
         <Route path="/student/ProfileSettings" element={<Profile />} />
         <Route path="/student/Profile" element={<ViewProfile />} />
         <Route path="/student/SkillDevelopment" element={<Quizo />} />
+        <Route path="/student/aptitude" element={<QList option={'aptitude'} />} />
+        <Route path="/student/cousework" element={<QList option={'coursework'} />} />
+        <Route path="/student/coding" element={<QList option={'code'} />} />
+        <Route path="/student/aptitude/:id" element={<TestPage option={'aptitude'} />} />
+        <Route path="/student/coursework/:id" element={<TestPage option={'coursework'} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

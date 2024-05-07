@@ -26,7 +26,7 @@ const course = [
     },
 ];
 
-const Quizo = () => {
+const Quizoption = () => {
     const navigate = useNavigate();
     const [cookies, removeCookie] = useCookies([]);
     const [username, setUsername] = useState("");
@@ -84,4 +84,4 @@ const Quizo = () => {
     );
 };
 
-export default Quizo;
+export default Quizoption;

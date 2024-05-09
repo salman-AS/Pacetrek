@@ -3,7 +3,7 @@ import { BiSearch, BiNotification, BiLogOut } from 'react-icons/bi';
 
 // import Dashboard from '../pages/Dashboard';
 
-const ContentHeader = ({ username, Logout }) => {
+const ContentHeader = ({ username, Logout, navigate }) => {
 
 	console.log(username)
 
@@ -16,7 +16,7 @@ const ContentHeader = ({ username, Logout }) => {
 					<BiSearch className="icon" />
 				</div>
 				<div className="notify">
-					<BiNotification className="icon" />
+					<BiNotification className="icon" onClick={navigate}/>
 				</div>
 				<BiLogOut className='icon' onClick={Logout} title='Logout' />
 			</div>

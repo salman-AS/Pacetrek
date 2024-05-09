@@ -184,9 +184,9 @@ const Coding = () => {
                                     </Link>
                                 );
                             }}/>
-                            <Column title="Video Solution" className='center' dataIndex="ytLink" key="ytLink" render={(ytLink) => {
+                            <Column title="Video Solution" dataIndex="ytLink" key="ytLink" render={(ytLink) => {
                                 return (
-                                    <Link href={ytLink} target="_blank">
+                                    <Link href={ytLink} className='center' target="_blank">
                                         <BiSolidVideo size={30}/>
                                     </Link>
                                 );
@@ -211,7 +211,7 @@ const Coding = () => {
                                 key="_id"
                                 render={(_id) => (
                                     <Space size="middle">
-                                        <Button danger type='primary' onClick={() => remove(_id)}>Delete</Button>
+                                        <Button danger type='primary' className='button' onClick={() => remove(_id)}>Delete</Button>
                                     </Space>
                                 )}
                             />

@@ -229,7 +229,7 @@ const Qclient = ({ option }) => {
 								key="_id"
 								render={(_id) => (
 									<Space size="middle">
-										<Button danger type='primary' onClick={() => remove(_id)}>Delete</Button>
+										<Button danger className='button' type='primary' onClick={() => remove(_id)}>Delete</Button>
 									</Space>
 								)}
 							/>
